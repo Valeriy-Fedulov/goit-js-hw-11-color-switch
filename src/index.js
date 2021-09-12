@@ -18,7 +18,6 @@ const randomIntegerFromInterval = (min, max) => {
 const btnStartRef = document.querySelector('[data-action="start"]');
 const btnStopRef = document.querySelector('[data-action="stop"]');
 
-btnStartRef.disabled = false;
 btnStopRef.disabled = true;
 
 btnStartRef.addEventListener('click', getRndColor);
@@ -27,8 +26,8 @@ btnStopRef.addEventListener('click', stopRndColor);
 function getRndColor() {
   let oldColor;
   let color;
-  btnStartRef.disabled = true;
-  btnStopRef.disabled = false;
+  btnStartRef.toggleAttribute("disabled");
+  btnStopRef.toggleAttribute("disabled");
 
   timeID = setInterval(() => {
     
@@ -41,7 +40,7 @@ function getRndColor() {
 }
 
 function stopRndColor() {
-  btnStartRef.disabled = false;
-  btnStopRef.disabled = true;
+  btnStartRef.toggleAttribute("disabled");
+  btnStopRef.toggleAttribute("disabled");
   clearInterval(timeID);
 }
